@@ -7,6 +7,16 @@ describe "StaticPages" do
       visit '/static_pages/home'
       expect(page).to have_content('The Lion Fish Scuba Shop') 
     end 
+    
+    it "shoudl have the base title" do 
+      visit '/static_pages/home'
+      expect(page).to have_title("The Lion Fish Scuba Shop")
+    end 
+    
+    it "should not have a custom page title" do 
+      visit '/static_pages/home'
+      expect(page).to have_title("| Home")
+    end 
   end 
   
   describe "Help page" do 
