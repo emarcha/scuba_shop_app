@@ -1,5 +1,43 @@
 <% provide(:title, 'About Us') %>
 <h1>About Us</h1>
-<p>
-  Add info about the store.
-</p>
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+      <%= link_to image_tag("rails.png", alt: "Rails", width: '45%'), 'http://rubyonrails.org/' %>
+      <%= link_to image_tag("ruby.png", alt: "Ruby", width: '45%'), 'http://www.ruby-lang.org/en/' %>
+      <%= link_to image_tag("bootstrap.png", alt: "Bootstrap", width: '45%'), 'http://twitter.github.io/bootstrap/' %>
+    </div>
+    <div class="span10">
+      <p>
+        The Lion Fish Scuba Shop is the final project assigned for the Spring 2013 session of
+        <a href="http://gauss.cs.iit.edu/~virgil/cs445/index.html" target="_blank">CS 445</a>,
+        an undergraduate course for
+        <a href="http://www.iit.edu/csl/" target="_blank">Computer Science</a>
+        majors at
+        <a href="http://iit.edu/" target="_blank">IIT</a>.
+      </p>
+
+      <p>
+        Designed as the culmination of all object-oriented material learned in class,
+        the project encompasses object design, creation, and implementation for a
+        typical "real-world" scenario.
+      </p>
+
+      <p>
+        The "client," in this case the owner of a scuba shop offering tours,
+        wishes to modernize his business by moving tour bookings to a digital
+        format. "Customers," otherwise known as users, are able to view and
+        book upcoming tours. The "client" is also able to create and cancel
+        tours as he sees fit. The full project description can be viewed
+        <a href="http://gauss.cs.iit.edu/~virgil/cs445/mail.spring2013/project.html">
+          here
+        </a>.
+      </p>
+
+      <p>
+        The project was created using the open-source technology on the left.
+      </p>
+    </div>
+  </div>
+</div>
