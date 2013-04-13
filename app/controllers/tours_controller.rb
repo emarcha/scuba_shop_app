@@ -10,4 +10,8 @@ class ToursController < ApplicationController
     @tour = Tour.new
   end
 
+  def show
+    @tour = Tour.find(params[:id])
+  end
+
 end
