@@ -18,7 +18,9 @@ namespace :db do
 
     20.times do |n|
       title = Faker::Lorem.sentence
-      Tour.create!(title: title)
+      date = "1/1/2013"
+      Tour.create!(title: title,
+                   tour_date: date)
     end
   end
 end

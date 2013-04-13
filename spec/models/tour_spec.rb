@@ -3,12 +3,14 @@ require 'spec_helper'
 describe Tour do
 
   before do
-    @tour = Tour.new(title: "Test Tour")
+    @tour = Tour.new(title: "Test Tour",
+                     tour_date: "1/1/2013")
   end
 
   subject { @tour }
 
   it { should respond_to(:title) }
+  it { should respond_to(:tour_date) }
 
   it { should be_valid }
 
