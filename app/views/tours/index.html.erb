@@ -1,6 +1,10 @@
 <% provide(:title, 'Tour Listing') %>
 <h1>Tour Listing</h1>
 
-<p>
-  Insert upcoming tours...
-</p>
+<%= will_paginate %>
+
+<ul class="tours">
+  <%= render @tours %>
+</ul>
+
+<%= will_paginate %>
