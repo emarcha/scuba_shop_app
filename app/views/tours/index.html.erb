@@ -3,8 +3,18 @@
 
 <%= will_paginate %>
 
-<ul class="tours">
-  <%= render @tours %>
-</ul>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Total Seats</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @tours %>
+  </tbody>
+</table>
 
 <%= will_paginate %>

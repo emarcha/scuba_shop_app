@@ -16,9 +16,9 @@ namespace :db do
                    password_confirmation: password)
     end
 
-    20.times do |n|
+    50.times do |n|
       title = Faker::Lorem.sentence
-      date = "1/1/2013"
+      date = Random.date
       Tour.create!(title: title,
                    tour_date: date)
     end
