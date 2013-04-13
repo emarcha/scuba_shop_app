@@ -1,6 +1,8 @@
-<% provide(:title, @tour.title) %>
-<h1><%= @tour.title %></h1>
+<% provide(:title, 'Tour View') %>
 
 <p>
-  Tour on: <%= @tour.tour_date %>
+  Tour title: <%= @tour.title %>
+</p>
+<p>
+  Tour date: <%= @tour.tour_date %>
 </p>
