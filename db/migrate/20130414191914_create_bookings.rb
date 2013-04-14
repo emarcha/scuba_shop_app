@@ -5,5 +5,6 @@ class CreateBookings < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :bookings, [:tour_id, :created_at]
   end
 end
