@@ -11,10 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130413231202) do
+ActiveRecord::Schema.define(version: 20130414051116) do
 
-# Could not dump table "tours" because of following StandardError
-#   Unknown type 'money' for column 'price'
+  create_table "tours", force: true do |t|
+    t.string   "title"
+    t.date     "tour_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "total_seats"
+    t.integer  "available_seats"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
