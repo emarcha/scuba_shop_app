@@ -1,9 +1,17 @@
 <tr>
-    <td>
+    <td width="40%">
       <%= link_to tour.title, tour %>
     </td>
     <td>
+      <%= link_to "Book", '#', class: "btn btn-mini btn-primary" %>
+      <%= link_to "Details", '#', class: "btn btn-mini btn-info" %>
+      <%= link_to "Cancel", '#', class: "btn btn-mini btn-danger" %>
+    </td>
+    <td>
       <%= tour.tour_date %>
+    </td>
+    <td style="text-align: center">
+      <%= ChronicDuration.output(tour.duration, format: :short) %>
     </td>
     <td style="text-align: center">
       <%= tour.total_seats %>

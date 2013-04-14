@@ -17,15 +17,17 @@ namespace :db do
     end
 
     50.times do |n|
-      title = Faker::Lorem.sentence
+      title = Faker::Lorem.sentence(word_count = 4, supplemental = false)
       date = Random.date
       seats = Random.number(20)
       price = Random.number(20)
+      duration = ChronicDuration::parse('1 hour 30 minutes')
       Tour.create!(title: title,
                    tour_date: date,
                    total_seats: seats,
                    available_seats: seats,
-                   price_cents: price)
+                   price_cents: price,
+                   duration: duration)
     end
   end
 end
