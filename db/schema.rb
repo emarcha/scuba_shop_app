@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130414051116) do
+ActiveRecord::Schema.define(version: 20130414052312) do
 
   create_table "tours", force: true do |t|
     t.string   "title"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20130414051116) do
     t.datetime "updated_at"
     t.integer  "total_seats"
     t.integer  "available_seats"
+    t.integer  "price_cents",     default: 0,     null: false
+    t.string   "price_currency",  default: "USD", null: false
   end
 
   create_table "users", force: true do |t|

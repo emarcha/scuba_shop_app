@@ -20,10 +20,12 @@ namespace :db do
       title = Faker::Lorem.sentence
       date = Random.date
       seats = Random.number(20)
+      price = Random.number(20)
       Tour.create!(title: title,
                    tour_date: date,
                    total_seats: seats,
-                   available_seats: seats)
+                   available_seats: seats,
+                   price_cents: price)
     end
   end
 end
