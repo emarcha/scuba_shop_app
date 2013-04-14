@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130413194446) do
+ActiveRecord::Schema.define(version: 20130413231202) do
 
   create_table "tours", force: true do |t|
     t.string   "title"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20130413194446) do
     t.date     "start_date"
     t.date     "end_date"
     t.date     "tour_date"
+    t.integer  "total_seats"
+    t.integer  "available_seats"
   end
 
   create_table "users", force: true do |t|
