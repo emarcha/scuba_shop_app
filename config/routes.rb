@@ -3,6 +3,7 @@ ScubaShopApp::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :tours
+  resources :bookings
   
   root to: 'static_pages#home'
 
@@ -11,6 +12,7 @@ ScubaShopApp::Application.routes.draw do
   match '/signout',   to: 'sessions#destroy',       via: 'delete'
   match '/help',      to: 'static_pages#help',      via: 'get' 
   match '/about',     to: 'static_pages#about',     via: 'get'
+  match '/tours',     to: 'tours#index',            via: 'get'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
