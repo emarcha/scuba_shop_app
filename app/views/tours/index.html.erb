@@ -3,6 +3,11 @@
 
 <%= will_paginate %>
 
+<% if signed_in? && current_user.admin? %>
+  <%= link_to "Add Tour", '#', class: "btn btn-primary",
+                               style: "float: right;"%>
+<% end %>
+
 <table class="table table-striped">
   <thead>
     <tr>
