@@ -3,12 +3,15 @@
       <%= link_to tour.title, tour %>
     </td>
     <td>
-      <%= link_to "Book", '#', class: "btn btn-mini btn-primary" %>
-      <%= link_to "Details", '#', class: "btn btn-mini btn-info" %>
-      <%= link_to "Cancel", '#', class: "btn btn-mini btn-danger" %>
+      <%= link_to "Book", '#', class: "btn btn-mini btn-success" %>
+
+      <% if signed_in? && current_user.admin?  %>
+        <%= link_to "Details", '#', class: "btn btn-mini btn-info" %>
+        <%= link_to "Cancel", '#', class: "btn btn-mini btn-danger" %>
+      <% end %>
     </td>
     <td>
-      <%= tour.tour_date %>
+      <%= tour.tour_date.strftime("%d-%b-%Y") %>
     </td>
     <td style="text-align: center">
       <%= ChronicDuration.output(tour.duration, format: :short) %>
