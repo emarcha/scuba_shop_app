@@ -3,10 +3,12 @@ require 'spec_helper'
 describe Tour do
 
   before do
+    @time_to_parse = '1 hour 30 minutes'
     @tour = Tour.new(title: 'Test Tour',
                      tour_date: '1/1/2013',
                      total_seats: 10,
-                     price_cents: 100 )
+                     price_cents: 100,
+                     duration_before_typecast: @time_to_parse)
   end
 
   subject { @tour }
@@ -16,6 +18,7 @@ describe Tour do
   it { should respond_to(:total_seats) }
   it { should respond_to(:available_seats) }
   it { should respond_to(:price_cents) }
+  it { should respond_to(:duration) }
 
   it { should be_valid }
 
@@ -67,6 +70,16 @@ describe Tour do
   describe 'when pricing is less than 0' do
     before { @tour.price_cents = -1 }
     it { should_not be_valid }
+  end
+
+  describe 'when duration input is not present' do
+    before { @tour.duration_before_typecast = ' '}
+    it { should_not be_valid }
+  end
+
+  describe 'parsing duration' do
+    before { @tour.save }
+    its(:duration) { should eql(ChronicDuration.parse(@time_to_parse)) }
   end
 
 end
