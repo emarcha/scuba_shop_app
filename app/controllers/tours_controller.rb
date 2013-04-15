@@ -12,7 +12,6 @@ class ToursController < ApplicationController
 
   def create
     @tour = Tour.new(tour_params)
-    @tour.available_seats = @tour.total_seats
     if @tour.save
       flash[:success] = "New tour created!"
       redirect_to @tour
