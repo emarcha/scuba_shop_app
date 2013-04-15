@@ -1,6 +1,6 @@
 class ToursController < ApplicationController
 
-  before_action :admin_user,      only: [:new]
+  before_action :admin_user,      only: [:new, :create]
 
   def index
     @tours = Tour.paginate(page: params[:page])
@@ -10,8 +10,28 @@ class ToursController < ApplicationController
     @tour = Tour.new
   end
 
+  def create
+    @tour = Tour.new(tour_params)
+    @tour.available_seats = @tour.total_seats
+    if @tour.save
+      flash[:success] = "New tour created!"
+      redirect_to @tour
+    else
+      render 'new'
+    end
+  end
+
   def show
     @tour = Tour.find(params[:id])
   end
+
+  private
+
+    def tour_params
+      params.require(:tour).permit(:title,
+                                   :tour_date,
+                                   :total_seats,
+                                   :price_cents)
+    end
 
 end

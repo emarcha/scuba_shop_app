@@ -1,0 +1,27 @@
+<% provide(:title, 'New Tour') %>
+<h1>Create Tour</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@tour) do |f| %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+
+      <%= f.label :tour_date %>
+      <%= f.date_select :tour_date %>
+
+      <%= f.label :tour_duration %>
+      <%= f.text_field :duration %>
+
+      <%= f.label :total_seats %>
+      <%= f.number_field :total_seats %>
+
+      <%= f.label :tour_price %>
+      <%= f.number_field :price_cents %>
+
+      <%= f.submit "Create Tour", class: "btn btn-large btn-primary" %>
+
+    <% end %>
+  </div>
+</div>

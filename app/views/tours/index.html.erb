@@ -4,7 +4,7 @@
 <%= will_paginate %>
 
 <% if signed_in? && current_user.admin? %>
-  <%= link_to "Add Tour", '#', class: "btn btn-primary",
+  <%= link_to "Add Tour", new_tour_path, class: "btn btn-primary",
                                style: "float: right;"%>
 <% end %>
 
