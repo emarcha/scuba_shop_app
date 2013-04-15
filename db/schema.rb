@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20130415073239) do
     t.date     "tour_date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "total_seats"
+    t.integer  "total_seats",              default: 1
     t.integer  "available_seats"
     t.integer  "price_cents",              default: 0,     null: false
     t.string   "price_currency",           default: "USD", null: false

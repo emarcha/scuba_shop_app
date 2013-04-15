@@ -30,6 +30,7 @@ class ToursController < ApplicationController
       params.require(:tour).permit(:title,
                                    :tour_date,
                                    :total_seats,
+                                   :duration_before_typecast,
                                    :price_cents)
     end
 

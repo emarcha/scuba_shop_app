@@ -20,15 +20,15 @@ namespace :db do
     50.times do |n|
       title = Faker::Lorem.sentence(word_count = 4, supplemental = false)
       date = Random.date
-      seats = Random.number(20)
-      price = Random.number(20)
-      duration = ChronicDuration::parse('1 hour 30 minutes')
+      seats = Random.number(1..20)
+      price = Random.number(1..20)
+      duration_input = "#{Random.number(1..12)} hour #{Random.number(1..59)} minutes"
       Tour.create!(title: title,
                    tour_date: date,
                    total_seats: seats,
                    available_seats: seats,
                    price_cents: price,
-                   duration: duration)
+                   duration_before_typecast: duration_input)
     end
   end
 end
