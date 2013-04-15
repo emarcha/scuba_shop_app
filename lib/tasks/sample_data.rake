@@ -17,12 +17,12 @@ namespace :db do
                    password_confirmation: password)
     end
 
-    50.times do |n|
+    15.times do |n|
       title = Faker::Lorem.sentence(word_count = 4, supplemental = false)
       date = Random.date
       seats = Random.number(1..20)
       price = Random.number(1..20)
-      duration_input = "#{Random.number(1..12)} hour #{Random.number(1..59)} minutes"
+      duration_input = "#{Random.number(1..120)} minutes"
       Tour.create!(title: title,
                    tour_date: date,
                    total_seats: seats,
