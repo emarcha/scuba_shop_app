@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130415073239) do
+ActiveRecord::Schema.define(version: 20130415221324) do
 
   create_table "bookings", force: true do |t|
     t.integer  "tour_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "num_seats"
   end
 
   add_index "bookings", ["tour_id", "created_at"], name: "index_bookings_on_tour_id_and_created_at"
