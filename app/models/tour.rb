@@ -16,6 +16,11 @@ class Tour < ActiveRecord::Base
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 1 }
 
+  validates :price_cents,
+            presence: true,
+            numericality: { only_integer: true,
+                            greater_than_or_equal_to: 0}
+
   private
 
     def populate_available_seats
