@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20130415221324) do
     t.integer  "tour_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "num_seats"
+    t.integer  "num_seats",  default: 1
   end
 
   add_index "bookings", ["tour_id", "created_at"], name: "index_bookings_on_tour_id_and_created_at"

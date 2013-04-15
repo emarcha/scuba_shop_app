@@ -11,6 +11,7 @@ describe Booking do
 
   it { should respond_to(:tour_id) }
   it { should respond_to(:num_seats) }
+  it { should respond_to(:paid) }
 
   it { should be_valid }
 
