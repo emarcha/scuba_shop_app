@@ -4,7 +4,8 @@ describe Booking do
 
   before do
     @booking = Booking.new(tour_id: 10,
-                           num_seats: 2)
+                           num_seats: 2,
+                           paid: true)
   end
 
   subject { @booking }
@@ -27,6 +28,11 @@ describe Booking do
 
   describe 'when seats are less than 1' do
     before { @booking.num_seats = 0 }
+    it { should_not be_valid }
+  end
+
+  describe 'when paid status is not set' do
+    before { @booking.paid = nil }
     it { should_not be_valid }
   end
 
