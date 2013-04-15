@@ -18,6 +18,7 @@ describe Tour do
   it { should respond_to(:total_seats) }
   it { should respond_to(:available_seats) }
   it { should respond_to(:price_cents) }
+  it { should respond_to(:duration_before_typecast) }
   it { should respond_to(:duration) }
 
   it { should be_valid }
@@ -77,7 +78,7 @@ describe Tour do
     it { should_not be_valid }
   end
 
-  describe 'parsing duration' do
+  describe 'parsing duration input' do
     before { @tour.save }
     its(:duration) { should eql(ChronicDuration.parse(@time_to_parse)) }
   end
