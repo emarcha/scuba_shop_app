@@ -1,8 +1,10 @@
 <% provide(:title, 'Tour View') %>
 
-<p>
-  Tour title: <%= @tour.title %>
-</p>
-<p>
-  Tour date: <%= @tour.tour_date %>
-</p>
+<h4>Title</h4>
+<p><%= @tour.title %></p>
+
+<h4>Date</h4>
+<p><%= @tour.tour_date.strftime("%B %d, %Y") %></p>
+
+<h4>Remaining Seats</h4>
+<p><%= @tour.available_seats %></p>
