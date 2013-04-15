@@ -8,5 +8,13 @@ FactoryGirl.define do
     factory :admin do
       admin true
     end
-  end 
+  end
+
+  factory :tour do
+    title       'Sample tour'
+    tour_date   '1/1/2013'
+    total_seats 10
+    price_cents 25
+    duration_before_typecast '300 minutes'
+  end
 end 
