@@ -38,9 +38,4 @@ describe Booking do
     it { should_not be_valid }
   end
 
-  describe 'tour associations' do
-    before { @booking.save }
-    expect(tour.available_seats).to eql(tour.total_seats - @booking.num_seats)
-  end
-
 end

@@ -23,13 +23,14 @@ namespace :db do
       seats = Random.number(5..20)
       price = Random.number(5..20)
       duration_input = "#{Random.number(20..180)} minutes"
-      tour = Tour.create!(title: title,
+      tour = Tour.new(title: title,
                           tour_date: date,
                           total_seats: seats,
                           price_cents: price,
                           duration_before_typecast: duration_input)
-      (seats/2).times do
-        tour.bookings.create!(num_seats: 2, paid: true)
+      tour.save
+      ((seats-1)/2).times do
+        tour.bookings.create(num_seats: 2, paid: true)
       end
     end
 
