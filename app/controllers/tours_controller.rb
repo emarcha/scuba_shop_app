@@ -22,6 +22,7 @@ class ToursController < ApplicationController
 
   def show
     @tour = Tour.find(params[:id])
+    @bookings = @tour.bookings.paginate(page: params[:page])
   end
 
   private

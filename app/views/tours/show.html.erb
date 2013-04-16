@@ -25,11 +25,13 @@
           <th>Customer</th>
           <th>Seats Purchased</th>
           <th>Total</th>
+          <th>Purchased</th>
         </thead>
         <tbody>
-
+          <%= render @bookings %>
         </tbody>
       </table>
+      <%= will_paginate @bookings %>
     <% else %>
       No bookings for this tour.
     <% end %>
