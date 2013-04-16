@@ -114,7 +114,7 @@ describe Tour do
       @tour.bookings.create(num_seats: num_seats, paid: true)
     end
     it 'should update available seats' do
-      expect(@tour.available_seats).to eql(@tour.total_seats - num_seats)
+      expect(Tour.find(@tour.id).available_seats).to eql(@tour.total_seats - num_seats)
     end
   end
 
