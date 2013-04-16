@@ -1,6 +1,6 @@
 class ToursController < ApplicationController
 
-  before_action :admin_user,      only: [:new, :create]
+  before_action :admin_user,      only: [:new, :create, :show]
 
   def index
     @tours = Tour.paginate(page: params[:page])

@@ -6,7 +6,7 @@
       <%= link_to "Book", '#', class: "btn btn-mini btn-success" %>
 
       <% if signed_in? && current_user.admin?  %>
-        <%= link_to "Details", '#', class: "btn btn-mini btn-info" %>
+        <%= link_to "Details", tour_path(tour), class: "btn btn-mini btn-info" %>
         <%= link_to "Cancel", '#', class: "btn btn-mini btn-danger" %>
       <% end %>
     </td>

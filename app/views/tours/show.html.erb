@@ -1,10 +1,37 @@
 <% provide(:title, 'Tour View') %>
 
-<h4>Title</h4>
-<p><%= @tour.title %></p>
+<div class="row-fluid">
+  <div class="span4">
+    <h4>Title</h4>
+    <p><%= @tour.title %></p>
 
-<h4>Date</h4>
-<p><%= @tour.tour_date.strftime("%B %d, %Y") %></p>
+    <h4>Date</h4>
+    <p><%= @tour.tour_date.strftime("%B %d, %Y") %></p>
 
-<h4>Remaining Seats</h4>
-<p><%= @tour.available_seats %></p>
+    <h4>Remaining Seats</h4>
+    <p><%= @tour.available_seats %></p>
+
+    <h4>Duration</h4>
+    <p><%= ChronicDuration.output(@tour.duration, format: :long) %></p>
+
+    <%= link_to "Add Booking", '#', class: "btn btn-primary" %>
+  </div>
+  <div class="span8">
+    <h4>Scheduled Bookings</h4>
+    <% if @tour.bookings.any? %>
+      <table class="table table-striped">
+        <thead>
+          <th>Booking ID</th>
+          <th>Customer</th>
+          <th>Seats Purchased</th>
+          <th>Total</th>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    <% else %>
+      No bookings for this tour.
+    <% end %>
+  </div>
+</div>
