@@ -20,6 +20,7 @@ describe Tour do
   it { should respond_to(:price_cents) }
   it { should respond_to(:duration_before_typecast) }
   it { should respond_to(:duration) }
+  it { should respond_to(:bookings) }
 
   it { should be_valid }
 

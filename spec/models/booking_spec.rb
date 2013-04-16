@@ -2,17 +2,19 @@ require 'spec_helper'
 
 describe Booking do
 
+  let(:tour) { FactoryGirl.create(:tour) }
+
   before do
-    @booking = Booking.new(tour_id: 10,
-                           num_seats: 2,
-                           paid: true)
+    @booking = tour.bookings.build(num_seats: 2,
+                                   paid: true)
   end
 
   subject { @booking }
 
-  it { should respond_to(:tour_id) }
   it { should respond_to(:num_seats) }
   it { should respond_to(:paid) }
+  it { should respond_to(:tour_id) }
+  it { should respond_to(:tour) }
 
   it { should be_valid }
 
