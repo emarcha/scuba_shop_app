@@ -5,8 +5,8 @@ class Tour < ActiveRecord::Base
            after_add: :update_available_seats,
            dependent: :destroy
 
-  before_save :populate_available_seats
-  before_save :parse_time_input
+  before_create :populate_available_seats
+  before_create :parse_time_input
 
   validates :title,
             presence: true,
