@@ -17,4 +17,10 @@ FactoryGirl.define do
     price_cents 25
     duration_before_typecast '300 minutes'
   end
+
+  factory :booking do
+    num_seats   2
+    paid        true
+    tour
+  end
 end 

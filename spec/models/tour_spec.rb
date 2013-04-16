@@ -84,4 +84,27 @@ describe Tour do
     its(:duration) { should eql(ChronicDuration.parse(@time_to_parse)) }
   end
 
+  describe 'booking associations' do
+    before { @tour.save }
+    let!(:older_booking) do
+      FactoryGirl.create(:booking, tour: @tour, created_at: 1.day.ago)
+    end
+    let!(:newer_booking) do
+      FactoryGirl.create(:booking, tour: @tour, created_at: 1.hour.ago)
+    end
+
+    it 'should have bookings in the right order' do
+      expect(@tour.bookings.to_a).to eql([newer_booking, older_booking])
+    end
+
+    it 'should destroy associated bookings' do
+      bookings = @tour.bookings.to_a
+      @tour.destroy
+      expect(bookings).not_to be_empty
+      bookings.each do |booking|
+        expect(Booking.where(id: booking.id)).to be_empty
+      end
+    end
+  end
+
 end

@@ -2,6 +2,8 @@ class Booking < ActiveRecord::Base
 
   belongs_to :tour
 
+  default_scope -> { order('created_at DESC') }
+
   validates :tour_id,
             presence: true
 

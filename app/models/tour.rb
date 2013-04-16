@@ -1,6 +1,6 @@
 class Tour < ActiveRecord::Base
 
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
 
   before_save :populate_available_seats
   before_save :parse_time_input
