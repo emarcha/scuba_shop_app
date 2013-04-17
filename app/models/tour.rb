@@ -40,7 +40,7 @@ class Tour < ActiveRecord::Base
 
     def check_available_seats(booking)
       if booking.num_seats > self.available_seats
-        raise 'error'
+        raise 'Number of seats booked cannot be greater than available seats'
       end
     end
 
