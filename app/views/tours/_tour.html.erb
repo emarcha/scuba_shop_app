@@ -3,7 +3,7 @@
       <%= tour.title %>
     </td>
     <td>
-      <%= link_to "Book", new_booking_path(tour), class: "btn btn-mini btn-success" %>
+      <%= link_to "Book", new_tour_booking_path(tour), class: "btn btn-mini btn-success" %>
 
       <% if signed_in? && current_user.admin?  %>
         <%= link_to "Details", tour_path(tour), class: "btn btn-mini btn-info" %>

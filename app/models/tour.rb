@@ -1,7 +1,7 @@
 class Tour < ActiveRecord::Base
 
   has_many :bookings,
-           before_add: :check_available_seats,
+           #before_add: :check_available_seats,
            after_add: :update_available_seats,
            dependent: :destroy
 

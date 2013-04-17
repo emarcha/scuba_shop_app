@@ -13,7 +13,7 @@ class ToursController < ApplicationController
   def create
     @tour = Tour.new(tour_params)
     if @tour.save
-      flash[:success] = "New tour created!"
+      flash[:success] = 'New tour created!'
       redirect_to @tour
     else
       render 'new'

@@ -1,9 +1,10 @@
 ScubaShopApp::Application.routes.draw do
 
-  resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :tours
-  resources :bookings
+  resources :users
+  resources :tours do
+    resources :bookings
+  end
   
   root to: 'static_pages#home'
 

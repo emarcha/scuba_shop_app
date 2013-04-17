@@ -3,26 +3,12 @@
 
 <div class="controls controls-row">
   <div class="span6 offset3">
-    <%= form_for(@booking) do |f| %>
+    <%= form_for [@tour, @booking] do |f| %>
 
-        <%= f.label :title, "Name" %>
-        <%= f.text_field :title, class: "input-block-level",
-                         placeholder: "eg. Dolphin Scuba Tour" %>
+        <%= f.label :num_seats, 'Number of seats' %>
+        <%= f.number_field :num_seats %>
 
-        <%= f.label :tour_date, "Date" %>
-        <%= f.date_select :tour_date %>
-
-        <%= f.label :duration_before_typecast, "Duration" %>
-        <%= f.text_field :duration_before_typecast, class: "input-block-level",
-                         placeholder: "eg. 1 hour 30 minutes" %>
-
-        <%= f.label :total_seats, "Total Seats" %>
-        <%= f.number_field :total_seats, class: "input-block-level" %>
-
-        <%= f.label :tour_price, "Price per person" %>
-        <%= f.number_field :price_cents, class: "input-block-level" %>
-
-        <%= f.submit "Create Tour", class: "btn btn-large btn-block btn-primary" %>
+        <%= f.submit 'Book Tour', class: "btn btn-large btn-block btn-primary" %>
 
     <% end %>
   </div>
