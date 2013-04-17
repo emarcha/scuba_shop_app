@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
   def create
     @tour = Tour.find(params[:tour_id])
     @booking = @tour.bookings.build(booking_params)
+    #@booking.paid = true
     if @booking.save
       redirect_to tours_path
     else
