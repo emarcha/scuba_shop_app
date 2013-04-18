@@ -2,7 +2,6 @@ class Tour < ActiveRecord::Base
 
   has_many :bookings,
            before_add: :check_available_seats,
-           #after_add: :update_available_seats,
            dependent: :destroy
 
   before_create :populate_available_seats
@@ -43,10 +42,5 @@ class Tour < ActiveRecord::Base
         raise 'No seats available'
       end
     end
-
-    #def update_available_seats(booking)
-    #  self.available_seats -= booking.num_seats
-    #  self.update_attribute(:available_seats, self.available_seats)
-    #end
 
 end

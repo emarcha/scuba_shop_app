@@ -24,7 +24,6 @@ class Booking < ActiveRecord::Base
     end
 
     def update_available_seats
-      #self.tour.available_seats -= self.num_seats
       self.tour.update(available_seats: (self.tour.available_seats-=self.num_seats))
     end
 
