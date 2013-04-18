@@ -3,15 +3,19 @@
       <%= tour.title %>
     </td>
     <td>
-      <%= link_to "Book", new_tour_booking_path(tour), class: "btn btn-mini btn-success" %>
+      <% if tour.available_seats > 0 %>
+        <%= link_to 'Book', new_tour_booking_path(tour), class: 'btn btn-mini btn-success' %>
+      <% else %>
+        <%= link_to 'Book', '#', class: 'btn btn-mini btn-success disabled' %>
+      <% end %>
 
       <% if signed_in? && current_user.admin?  %>
-        <%= link_to "Details", tour_path(tour), class: "btn btn-mini btn-info" %>
-        <%= link_to "Cancel", '#', class: "btn btn-mini btn-danger" %>
+        <%= link_to 'Details', tour_path(tour), class: 'btn btn-mini btn-info' %>
+        <%= link_to 'Cancel', '#', class: 'btn btn-mini btn-danger' %>
       <% end %>
     </td>
     <td>
-      <%= tour.tour_date.strftime("%d-%b-%Y") %>
+      <%= tour.tour_date.strftime('%d-%b-%Y') %>
     </td>
     <td style="text-align: center">
       <%= ChronicDuration.output(tour.duration, format: :short) %>
