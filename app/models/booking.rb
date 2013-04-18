@@ -15,6 +15,10 @@ class Booking < ActiveRecord::Base
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 1 }
 
+  validates :credit_card_number,
+            presence: true,
+            length: { maximum: 19 }
+
   private
 
     def check_available_seats
