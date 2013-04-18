@@ -9,7 +9,11 @@ class BookingsController < ApplicationController
     @tour = Tour.find(params[:tour_id])
     @booking = @tour.bookings.build(booking_params)
     if @booking.save
-      redirect_to tours_path
+      unless signed_in? && current_user.admin?
+        redirect_to tours_path
+      else
+        redirect_to @tour
+      end
     else
       render 'new'
     end

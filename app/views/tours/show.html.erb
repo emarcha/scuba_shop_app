@@ -14,7 +14,7 @@
     <h4>Duration</h4>
     <p><%= ChronicDuration.output(@tour.duration, format: :long) %></p>
 
-    <%= link_to "Add Booking", '#', class: "btn btn-primary" %>
+    <%= link_to "Add Booking", new_tour_booking_path(@tour), class: "btn btn-primary" %>
   </div>
   <div class="span8">
     <h4>Scheduled Bookings</h4>
