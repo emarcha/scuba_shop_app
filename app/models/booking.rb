@@ -19,7 +19,7 @@ class Booking < ActiveRecord::Base
 
     def check_available_seats
       if self.tour.available_seats < self.num_seats
-        raise 'Number of seats booked cannot be greater than available seats'
+        raise 'Number of booked seats cannot be greater than available seats'
       end
     end
 

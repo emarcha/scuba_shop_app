@@ -107,4 +107,15 @@ describe Tour do
     end
   end
 
+  describe 'add bookings' do
+    before { @tour.save }
+    let!(:booking) do
+      FactoryGirl.create(:booking, tour: @tour)
+    end
+
+    it 'should decrease available seats' do
+      expect(@tour.available_seats).to eql(@tour.total_seats - booking.num_seats)
+    end
+  end
+
 end
