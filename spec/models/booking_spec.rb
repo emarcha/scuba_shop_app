@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Booking do
 
-  let!(:tour) { FactoryGirl.create(:tour) }
+  let(:tour) { FactoryGirl.create(:tour) }
 
   before do
     @booking = tour.bookings.build(num_seats: 2,
