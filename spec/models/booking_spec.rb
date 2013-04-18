@@ -33,11 +33,6 @@ describe Booking do
     it { should_not be_valid }
   end
 
-  describe 'when paid status is not set' do
-    before { @booking.paid = nil }
-    it { should_not be_valid }
-  end
-
 
 
 end

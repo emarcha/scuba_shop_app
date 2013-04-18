@@ -107,15 +107,4 @@ describe Tour do
     end
   end
 
-  describe 'add bookings' do
-    let(:num_seats) {2}
-    before do
-      @tour.save
-      @tour.bookings.create(num_seats: num_seats, paid: true)
-    end
-    it 'should update available seats' do
-      expect(Tour.find(@tour.id).available_seats).to eql(@tour.total_seats - num_seats)
-    end
-  end
-
 end
