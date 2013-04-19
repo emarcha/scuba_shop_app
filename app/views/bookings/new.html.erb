@@ -1,5 +1,5 @@
 <% provide(:title, 'Book Tour') %>
-<h1>Booking for...</h1>
+<h1>Booking for <%= @tour.title %></h1>
 
 <div class="controls controls-row">
   <div class="span6 offset3">
@@ -12,7 +12,10 @@
         <%= f.text_field :credit_card_number, placeholder: 'xxxx-xxxx-xxxx-xxxx' %>
 
         <%= f.label :card_security_code, 'Security Code' %>
-        <%= f.text_field :card_security_code, placeholder: 999 %>
+        <%= f.text_field :card_security_code, placeholder: '999' %>
+
+        <%= f.label :card_name, 'Cardholder Name' %>
+        <%= f.text_field :card_name, placeholder: 'Full Name' %>
 
         <%= f.submit 'Book Tour', class: "btn btn-large btn-block btn-primary" %>
 

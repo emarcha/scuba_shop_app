@@ -29,6 +29,10 @@ class Booking < ActiveRecord::Base
 
   validate :real_card_security_code
 
+  validates :card_name,
+            presence: true,
+            length: { maximum: 50 }
+
   private
 
     def check_available_seats

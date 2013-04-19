@@ -8,7 +8,8 @@ describe Booking do
     @booking = tour.bookings.build(num_seats: 2,
                                    paid: true,
                                    credit_card_number: '4539762311332008',
-                                   card_security_code: '773')
+                                   card_security_code: '773',
+                                   card_name: 'Card Owner')
   end
 
   subject { @booking }
@@ -19,6 +20,7 @@ describe Booking do
   it { should respond_to(:tour) }
   it { should respond_to(:credit_card_number) }
   it { should respond_to(:card_security_code) }
+  it { should respond_to(:card_name) }
 
   it { should be_valid }
 
@@ -69,6 +71,16 @@ describe Booking do
 
   describe 'when security code is invalid' do
     before { @booking.card_security_code = 'aaa' }
+    it { should_not be_valid }
+  end
+
+  describe 'when card name is not present' do
+    before { @booking.card_name = ' '}
+    it { should_not be_valid }
+  end
+
+  describe 'when card name is too long' do
+    before { @booking.card_name = 'a' * 51 }
     it { should_not be_valid }
   end
 
