@@ -22,6 +22,12 @@ class Booking < ActiveRecord::Base
 
   validate :real_credit_card_number
 
+  validates :card_security_code,
+            presence: true,
+            numericality: { only_integer: true,
+                            greater_than: 99,
+                            less_than: 10000 }
+
   private
 
     def check_available_seats

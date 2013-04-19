@@ -47,8 +47,28 @@ describe Booking do
     it { should_not be_valid }
   end
 
+  describe 'when card number is invalid' do
+    before { @booking.credit_card_number = 'not a valid number' }
+    it { should_not be_valid }
+  end
+
   describe 'when security code is not present' do
     before { @booking.card_security_code = nil }
+    it { should_not be_valid }
+  end
+
+  describe 'when security code is not an integer' do
+    before { @booking.card_security_code = 'a' }
+    it { should_not be_valid }
+  end
+
+  describe 'when security code is too small' do
+    before { @booking.card_security_code = 1 }
+    it { should_not be_valid }
+  end
+
+  describe 'when security code is too large' do
+    before { @booking.card_security_code = 10000 }
     it { should_not be_valid }
   end
 
