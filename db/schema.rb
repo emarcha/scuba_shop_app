@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20130419001451) do
     t.integer  "num_seats",          default: 1
     t.boolean  "paid",               default: false
     t.string   "credit_card_number"
-    t.integer  "card_security_code"
+    t.string   "card_security_code"
   end
 
   add_index "bookings", ["tour_id", "created_at"], name: "index_bookings_on_tour_id_and_created_at"

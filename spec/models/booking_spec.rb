@@ -8,7 +8,7 @@ describe Booking do
     @booking = tour.bookings.build(num_seats: 2,
                                    paid: true,
                                    credit_card_number: '4539762311332008',
-                                   card_security_code: 773)
+                                   card_security_code: '773')
   end
 
   subject { @booking }
@@ -53,22 +53,22 @@ describe Booking do
   end
 
   describe 'when security code is not present' do
-    before { @booking.card_security_code = nil }
-    it { should_not be_valid }
-  end
-
-  describe 'when security code is not an integer' do
-    before { @booking.card_security_code = 'a' }
+    before { @booking.card_security_code = ' ' }
     it { should_not be_valid }
   end
 
   describe 'when security code is too small' do
-    before { @booking.card_security_code = 1 }
+    before { @booking.card_security_code = 'a' * 2 }
     it { should_not be_valid }
   end
 
   describe 'when security code is too large' do
-    before { @booking.card_security_code = 10000 }
+    before { @booking.card_security_code = 'a' * 5 }
+    it { should_not be_valid }
+  end
+
+  describe 'when security code is invalid' do
+    before { @booking.card_security_code = 'aaa' }
     it { should_not be_valid }
   end
 

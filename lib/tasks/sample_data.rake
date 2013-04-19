@@ -7,7 +7,7 @@ namespace :db do
                          password_confirmation: 'password',
                          admin: true)
 
-    99.times do |n|
+    50.times do |n|
       name = Faker::Name.name
       email = "user#{n+1}@example.com"
       password = 'password'
@@ -31,7 +31,8 @@ namespace :db do
       ((seats-1)/2).times do
         tour.bookings.create(num_seats: 2,
                              paid: true,
-                             credit_card_number: '4539762311332008')
+                             credit_card_number: '4539762311332008',
+                             card_security_code: '123')
       end
     end
 

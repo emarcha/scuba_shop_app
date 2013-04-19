@@ -24,9 +24,10 @@ class Booking < ActiveRecord::Base
 
   validates :card_security_code,
             presence: true,
-            numericality: { only_integer: true,
-                            greater_than: 99,
-                            less_than: 10000 }
+            length: { maximum: 4,
+                      minimum: 3}
+
+  validate :real_card_security_code
 
   private
 
@@ -42,7 +43,13 @@ class Booking < ActiveRecord::Base
 
     def real_credit_card_number
       unless credit_card_number.creditcard?
-        errors.add(:credit_card_number, 'needs to be a real credit card number')
+        errors.add(:credit_card_number, 'needs to be a valid credit card number')
+      end
+    end
+
+    def real_card_security_code
+      unless card_security_code.to_i > 0
+        errors.add(:card_security_code, 'needs to be a valid security code')
       end
     end
 
