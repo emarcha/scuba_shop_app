@@ -5,7 +5,7 @@ class Booking < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
 
   before_save :check_available_seats
-  before_save :check_credit_card_number
+  #before_save :check_credit_card_number
   after_save :update_available_seats
 
   validates :tour_id,
@@ -20,6 +20,8 @@ class Booking < ActiveRecord::Base
             presence: true,
             length: { maximum: 19 }
 
+  validate :real_credit_card_number
+
   private
 
     def check_available_seats
@@ -32,9 +34,9 @@ class Booking < ActiveRecord::Base
       self.tour.update(available_seats: (self.tour.available_seats-=self.num_seats))
     end
 
-    def check_credit_card_number
-      unless self.credit_card_number.creditcard?
-        raise 'Not a valid credit card'
+    def real_credit_card_number
+      unless credit_card_number.creditcard?
+        errors.add(:credit_card_number, 'needs to be a real credit card number')
       end
     end
 
