@@ -6,8 +6,7 @@ class Booking < ActiveRecord::Base
 
   before_save :check_available_seats
   before_save { confirmation_email.downcase!}
-  after_save  :update_available_seats,
-              :toggle_paid_status
+  after_save  :update_available_seats
 
   validates :tour_id,
             presence: true
@@ -62,7 +61,7 @@ class Booking < ActiveRecord::Base
 
   validates :billing_zipcode,
             presence: true,
-            length: { minimum: 6,
+            length: { minimum: 5,
                       maximum: 10 }
 
   private
@@ -75,10 +74,6 @@ class Booking < ActiveRecord::Base
 
     def update_available_seats
       self.tour.update(available_seats: (self.tour.available_seats-=self.num_seats))
-    end
-
-    def toggle_paid_status
-      self.update_attribute(:paid, true)
     end
 
     def numeric_credit_card_number
