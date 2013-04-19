@@ -11,7 +11,8 @@ describe Booking do
                                    card_security_code: '773',
                                    card_name: 'Card Owner',
                                    card_exp_month: 1,
-                                   card_exp_year: '2013')
+                                   card_exp_year: '2013',
+                                   confirmation_email: 'user@example.com')
   end
 
   subject { @booking }
@@ -25,6 +26,7 @@ describe Booking do
   it { should respond_to(:card_name) }
   it { should respond_to(:card_exp_month) }
   it { should respond_to(:card_exp_year) }
+  it { should respond_to(:confirmation_email) }
 
   it { should be_valid }
 
@@ -126,6 +128,32 @@ describe Booking do
   describe 'when card exp year is not a number' do
     before { @booking.card_exp_year = 'a' * 4 }
     it { should_not be_valid }
+  end
+
+  describe 'when email is not present' do
+    before { @booking.confirmation_email = ' ' }
+    it { should_not be_valid }
+  end
+
+  describe 'when email format is invalid' do
+    it 'should be invalid' do
+      addresses = %w[user@foo,com user_at_foo.org example.user@foo.
+                     foo@bar_baz.com foo@bar+baz.com]
+      addresses.each do |invalid_addresses|
+        @booking.confirmation_email = invalid_addresses
+        expect(@booking).not_to be_valid
+      end
+    end
+  end
+
+  describe 'when email format is valid' do
+    it 'should be valid' do
+      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+      addresses.each do |valid_address|
+        @booking.confirmation_email = valid_address
+        expect(@booking).to be_valid
+      end
+    end
   end
 
 end

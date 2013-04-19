@@ -28,13 +28,14 @@ namespace :db do
                           total_seats: seats,
                           price_cents: price,
                           duration_before_typecast: duration_input)
-      ((seats-1)/2).times do
+      (seats/4).times do
         tour.bookings.create(num_seats: 2,
                              credit_card_number: '4539762311332008',
-                             card_security_code: '123',
-                             card_name: 'Card Owner',
-                             card_exp_month: 1,
-                             card_exp_year: '2013')
+                             card_security_code: "#{Random.number(100..900)}",
+                             card_name: Faker::Name.name,
+                             card_exp_month: Random.number(1..12),
+                             card_exp_year: "#{Random.number(1990..2040)}",
+                             confirmation_email: "#{Faker::Internet.safe_email}")
       end
     end
 

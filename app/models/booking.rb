@@ -5,6 +5,7 @@ class Booking < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
 
   before_save :check_available_seats
+  before_save { confirmation_email.downcase!}
   after_save  :update_available_seats,
               :toggle_paid_status
 
@@ -44,6 +45,12 @@ class Booking < ActiveRecord::Base
             length: { is: 4 }
 
   validate :numeric_year
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  validates :confirmation_email,
+            presence: true,
+            format: { with: VALID_EMAIL_REGEX }
 
   private
 
