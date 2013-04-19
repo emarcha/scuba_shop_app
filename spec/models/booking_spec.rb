@@ -12,7 +12,10 @@ describe Booking do
                                    card_name: 'Card Owner',
                                    card_exp_month: 1,
                                    card_exp_year: '2013',
-                                   confirmation_email: 'user@example.com')
+                                   confirmation_email: 'user@example.com',
+                                   billing_address: '1234 Fake St',
+                                   billing_state: 'IL',
+                                   billing_zipcode: '60006-1234')
   end
 
   subject { @booking }
@@ -27,6 +30,9 @@ describe Booking do
   it { should respond_to(:card_exp_month) }
   it { should respond_to(:card_exp_year) }
   it { should respond_to(:confirmation_email) }
+  it { should respond_to(:billing_address) }
+  it { should respond_to(:billing_state) }
+  it { should respond_to(:billing_zipcode) }
 
   it { should be_valid }
 
@@ -154,6 +160,45 @@ describe Booking do
         expect(@booking).to be_valid
       end
     end
+  end
+
+  describe 'when billing address is not present' do
+    before { @booking.billing_address = ' ' }
+    it { should_not be_valid }
+  end
+
+  describe 'when billing address is too long' do
+    before { @booking.billing_address = 'a' * 71 }
+  end
+
+  describe 'when billing state is not present' do
+    before { @booking.billing_state = ' ' }
+    it { should_not be_valid }
+  end
+
+  describe 'when billing state is too long' do
+    before { @booking.billing_state = 'a' * 3 }
+    it { should_not be_valid }
+  end
+
+  describe 'when billing state is too short' do
+    before { @booking.billing_state = 'a' }
+    it { should_not be_valid }
+  end
+
+  describe 'when billing zipcode is not present' do
+    before { @booking.billing_zipcode = ' ' }
+    it { should_not be_valid }
+  end
+
+  describe 'when billing zipcode is too small' do
+    before { @booking.billing_zipcode = '1234' }
+    it { should_not be_valid }
+  end
+
+  describe 'when billing zipcode is too long' do
+    before { @booking.billing_zipcode = '12345-12345' }
+    it { should_not be_valid }
   end
 
 end

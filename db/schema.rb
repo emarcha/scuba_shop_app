@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130419061658) do
+ActiveRecord::Schema.define(version: 20130419074755) do
 
   create_table "bookings", force: true do |t|
     t.integer  "tour_id"
@@ -25,6 +25,9 @@ ActiveRecord::Schema.define(version: 20130419061658) do
     t.integer  "card_exp_month"
     t.string   "card_exp_year"
     t.string   "confirmation_email"
+    t.string   "billing_address"
+    t.string   "billing_zipcode"
+    t.string   "billing_state"
   end
 
   add_index "bookings", ["tour_id", "created_at"], name: "index_bookings_on_tour_id_and_created_at"

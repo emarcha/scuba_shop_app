@@ -52,6 +52,19 @@ class Booking < ActiveRecord::Base
             presence: true,
             format: { with: VALID_EMAIL_REGEX }
 
+  validates :billing_address,
+            presence: true,
+            length: { maximum: 70 }
+
+  validates :billing_state,
+            presence: true,
+            length: { is: 2 }
+
+  validates :billing_zipcode,
+            presence: true,
+            length: { minimum: 6,
+                      maximum: 10 }
+
   private
 
     def check_available_seats

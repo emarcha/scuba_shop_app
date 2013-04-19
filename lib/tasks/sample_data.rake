@@ -35,7 +35,10 @@ namespace :db do
                              card_name: Faker::Name.name,
                              card_exp_month: Random.number(1..12),
                              card_exp_year: "#{Random.number(1990..2040)}",
-                             confirmation_email: "#{Faker::Internet.safe_email}")
+                             confirmation_email: Faker::Internet.safe_email,
+                             billing_address: Faker::Address.street_address,
+                             billing_state: Faker::Address.state_abbr,
+                             billing_zipcode: Faker::Address.zip_code)
       end
     end
 
