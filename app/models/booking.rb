@@ -19,14 +19,14 @@ class Booking < ActiveRecord::Base
             presence: true,
             length: { maximum: 19 }
 
-  validate :real_credit_card_number
+  validate :numeric_credit_card_number
 
   validates :card_security_code,
             presence: true,
             length: { maximum: 4,
                       minimum: 3}
 
-  validate :real_card_security_code
+  validate :numeric_card_security_code
 
   validates :card_name,
             presence: true,
@@ -37,6 +37,12 @@ class Booking < ActiveRecord::Base
             numericality: { only_integer: true,
                             greater_than_or_equal_to: 1,
                             less_than_or_equal_to: 12 }
+
+  validates :card_exp_year,
+            presence: true,
+            length: { is: 4 }
+
+  validate :numeric_year
 
   private
 
@@ -50,15 +56,21 @@ class Booking < ActiveRecord::Base
       self.tour.update(available_seats: (self.tour.available_seats-=self.num_seats))
     end
 
-    def real_credit_card_number
+    def numeric_credit_card_number
       unless credit_card_number.creditcard?
-        errors.add(:credit_card_number, 'needs to be a valid credit card number')
+        errors.add(:credit_card_number, 'needs to be a numeric credit card number')
       end
     end
 
-    def real_card_security_code
+    def numeric_card_security_code
       unless card_security_code.to_i > 0
-        errors.add(:card_security_code, 'needs to be a valid security code')
+        errors.add(:card_security_code, 'needs to be a numeric security code')
+      end
+    end
+
+    def numeric_year
+      unless card_exp_year.to_i > 0
+        errors.add(:card_exp_year, 'needs to be a numeric security code')
       end
     end
 

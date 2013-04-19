@@ -34,7 +34,8 @@ namespace :db do
                              credit_card_number: '4539762311332008',
                              card_security_code: '123',
                              card_name: 'Card Owner',
-                             card_exp_month: 1)
+                             card_exp_month: 1,
+                             card_exp_year: '2013')
       end
     end
 

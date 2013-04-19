@@ -18,7 +18,10 @@
         <%= f.text_field :card_name, placeholder: 'Full Name' %>
 
         <%= f.label :card_exp_month, 'Exp Month' %>
-        <%= f.text_field :card_exp_month, placeholder: 1 %>
+        <%= f.number_field :card_exp_month, placeholder: 1 %>
+
+        <%= f.label :card_exp_year, 'Exp Year' %>
+        <%= f.text_field :card_exp_year, placeholder: '1900' %>
 
         <%= f.submit 'Book Tour', class: "btn btn-large btn-block btn-primary" %>
 
