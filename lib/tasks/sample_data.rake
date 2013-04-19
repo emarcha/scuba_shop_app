@@ -29,7 +29,9 @@ namespace :db do
                           price_cents: price,
                           duration_before_typecast: duration_input)
       ((seats-1)/2).times do
-        tour.bookings.create(num_seats: 2, paid: true)
+        tour.bookings.create(num_seats: 2,
+                             paid: true,
+                             credit_card_number: '4539762311332008')
       end
     end
 

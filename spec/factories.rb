@@ -21,6 +21,7 @@ FactoryGirl.define do
   factory :booking do
     num_seats   2
     paid        true
+    credit_card_number '4539762311332008'
     tour
   end
 end 

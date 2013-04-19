@@ -24,12 +24,6 @@ ActiveRecord::Schema.define(version: 20130418230913) do
 
   add_index "bookings", ["tour_id", "created_at"], name: "index_bookings_on_tour_id_and_created_at"
 
-  create_table "credit_cards", force: true do |t|
-    t.string   "number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tours", force: true do |t|
     t.string   "title"
     t.date     "tour_date"

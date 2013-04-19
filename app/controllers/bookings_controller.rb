@@ -22,7 +22,8 @@ class BookingsController < ApplicationController
   private
 
     def booking_params
-        params.require(:booking).permit(:num_seats)
+        params.require(:booking).permit(:num_seats,
+                                        :credit_card_number)
     end
 
 end

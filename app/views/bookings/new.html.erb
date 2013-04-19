@@ -8,6 +8,9 @@
         <%= f.label :num_seats, 'Number of seats' %>
         <%= f.number_field :num_seats %>
 
+        <%= f.label :credit_card_number, 'Credit card number' %>
+        <%= f.text_field :credit_card_number, placeholder: 'xxxx-xxxx-xxxx-xxxx' %>
+
         <%= f.submit 'Book Tour', class: "btn btn-large btn-block btn-primary" %>
 
     <% end %>
