@@ -22,6 +22,7 @@ FactoryGirl.define do
     num_seats   2
     paid        true
     credit_card_number '4539762311332008'
+    card_security_code '773'
     tour
   end
 end 
