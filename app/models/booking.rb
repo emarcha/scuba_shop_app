@@ -5,7 +5,8 @@ class Booking < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
 
   before_save :check_available_seats
-  after_save :update_available_seats
+  after_save  :update_available_seats,
+              :toggle_paid_status
 
   validates :tour_id,
             presence: true
@@ -54,6 +55,10 @@ class Booking < ActiveRecord::Base
 
     def update_available_seats
       self.tour.update(available_seats: (self.tour.available_seats-=self.num_seats))
+    end
+
+    def toggle_paid_status
+      self.update_attribute(:paid, true)
     end
 
     def numeric_credit_card_number

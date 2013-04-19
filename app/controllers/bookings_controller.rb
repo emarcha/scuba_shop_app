@@ -25,7 +25,9 @@ class BookingsController < ApplicationController
         params.require(:booking).permit(:num_seats,
                                         :credit_card_number,
                                         :card_security_code,
-                                        :card_name)
+                                        :card_name,
+                                        :card_exp_month,
+                                        :card_exp_year)
     end
 
 end

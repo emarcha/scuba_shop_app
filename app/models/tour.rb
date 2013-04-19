@@ -2,7 +2,7 @@ class Tour < ActiveRecord::Base
 
   has_many :bookings,
            before_add: :check_available_seats,
-           dependent: :destroy
+           dependent:  :destroy
 
   before_create :populate_available_seats
   before_create :parse_time_input
