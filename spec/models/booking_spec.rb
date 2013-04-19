@@ -9,7 +9,8 @@ describe Booking do
                                    paid: true,
                                    credit_card_number: '4539762311332008',
                                    card_security_code: '773',
-                                   card_name: 'Card Owner')
+                                   card_name: 'Card Owner',
+                                   card_exp_month: 1)
   end
 
   subject { @booking }
@@ -21,6 +22,7 @@ describe Booking do
   it { should respond_to(:credit_card_number) }
   it { should respond_to(:card_security_code) }
   it { should respond_to(:card_name) }
+  it { should respond_to(:card_exp_month) }
 
   it { should be_valid }
 
@@ -81,6 +83,26 @@ describe Booking do
 
   describe 'when card name is too long' do
     before { @booking.card_name = 'a' * 51 }
+    it { should_not be_valid }
+  end
+
+  describe 'when card exp month is not present' do
+    before { @booking.card_exp_month = nil }
+    it { should_not be_valid }
+  end
+
+  describe 'when card exp month is not a number' do
+    before { @booking.card_exp_month = 'a' }
+    it { should_not be_valid }
+  end
+
+  describe 'when card exp month is too large' do
+    before { @booking.card_exp_month = 13 }
+    it { should_not be_valid }
+  end
+
+  describe 'when card exp month is too small' do
+    before { @booking.card_exp_month = 0 }
     it { should_not be_valid }
   end
 

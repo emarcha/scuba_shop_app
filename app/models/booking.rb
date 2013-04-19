@@ -5,7 +5,6 @@ class Booking < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
 
   before_save :check_available_seats
-  #before_save :check_credit_card_number
   after_save :update_available_seats
 
   validates :tour_id,
@@ -32,6 +31,12 @@ class Booking < ActiveRecord::Base
   validates :card_name,
             presence: true,
             length: { maximum: 50 }
+
+  validates :card_exp_month,
+            presence: true,
+            numericality: { only_integer: true,
+                            greater_than_or_equal_to: 1,
+                            less_than_or_equal_to: 12 }
 
   private
 

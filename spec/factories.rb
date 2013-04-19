@@ -24,6 +24,7 @@ FactoryGirl.define do
     credit_card_number '4539762311332008'
     card_security_code '773'
     card_name   'Card Owner'
+    card_exp_month 1
     tour
   end
 end 
