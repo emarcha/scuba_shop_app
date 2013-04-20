@@ -46,6 +46,12 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1; 
 }
 
+h4.home {
+  line-height: 1.25em;
+  border-bottom: 1px solid $grayLight;
+  padding-bottom: 10px;
+}
+
 p { 
   font-size: 1.1em; 
   line-height: 1.7em; 
