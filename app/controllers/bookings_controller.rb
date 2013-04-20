@@ -27,7 +27,11 @@ class BookingsController < ApplicationController
                                         :card_security_code,
                                         :card_name,
                                         :card_exp_month,
-                                        :card_exp_year)
+                                        :card_exp_year,
+                                        :confirmation_email,
+                                        :billing_address,
+                                        :billing_state,
+                                        :billing_zipcode)
     end
 
 end
