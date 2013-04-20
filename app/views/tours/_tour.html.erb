@@ -14,7 +14,7 @@
       <% end %>
 
       <% if signed_in? && current_user.admin?  %>
-        <%= link_to 'Edit', '#', class: 'btn btn-mini btn-warning' %>
+        <%= link_to 'Edit', edit_tour_path(tour), class: 'btn btn-mini btn-warning' %>
         <%= link_to 'Cancel', '#', class: 'btn btn-mini btn-danger' %>
       <% end %>
     </td>
