@@ -5,23 +5,60 @@
   <div class="span6 offset3">
     <%= form_for [@tour, @booking] do |f| %>
 
-        <%= f.label :num_seats, 'Number of seats' %>
-        <%= f.number_field :num_seats %>
+        <h5>
+          Number of seats
+        </h5>
 
-        <%= f.label :credit_card_number, 'Credit card number' %>
-        <%= f.text_field :credit_card_number, placeholder: 'xxxx-xxxx-xxxx-xxxx' %>
+        <div class="controls controls-row">
+          <%= f.number_field :num_seats %> x <%= humanized_money_with_symbol @tour.price_cents %>
+        </div>
 
-        <%= f.label :card_security_code, 'Security Code' %>
-        <%= f.text_field :card_security_code, placeholder: '999' %>
+        <h5>
+          Credit Card Info
+        </h5>
 
-        <%= f.label :card_name, 'Cardholder Name' %>
-        <%= f.text_field :card_name, placeholder: 'Full Name' %>
+        <div class="controls controls-row">
+          <%= f.text_field :credit_card_number, placeholder: 'Card Number (xxxx-xxxx-xxxx-xxxx)',
+                                                class: 'span4' %>
 
-        <%= f.label :card_exp_month, 'Exp Month' %>
-        <%= f.number_field :card_exp_month, placeholder: 1 %>
+          <%= f.text_field :card_security_code, placeholder: 'Security Code',
+                                                class: 'span2' %>
+        </div>
 
-        <%= f.label :card_exp_year, 'Exp Year' %>
-        <%= f.text_field :card_exp_year, placeholder: '1900' %>
+        <div class="controls controls-row">
+          <%= f.text_field :card_name, placeholder: 'Cardholder Name',
+                                       class: 'span4' %>
+
+          <%= f.number_field :card_exp_month, placeholder: 'Month',
+                                              class: 'span1' %>
+
+          <%= f.text_field :card_exp_year, placeholder: 'Year',
+                                           class: 'span1' %>
+        </div>
+
+        <h5>
+          Billing Info
+        </h5>
+
+        <div class="controls controls-row">
+          <%= f.text_field :billing_address, placeholder: '123 S Boulevard Ave',
+                                             class: 'span4' %>
+
+          <%= f.text_field :billing_state, placeholder: 'XY',
+                                           class: 'span1' %>
+
+          <%= f.text_field :billing_zipcode, placeholder: 'Zip',
+                                             class: 'span1' %>
+        </div>
+
+        <h5>
+          Confirmation email sent to:
+        </h5>
+
+        <div class="controls controls-row">
+          <%= f.text_field :confirmation_email, placeholder: 'name@example.com',
+                                                class: 'span6' %>
+        </div>
 
         <%= f.submit 'Book Tour', class: "btn btn-large btn-block btn-primary" %>
 

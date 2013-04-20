@@ -30,7 +30,7 @@ class ToursController < ApplicationController
   end
 
   def update
-    if @tour.update_attributes(user_params)
+    if @tour.update_attributes(tour_params)
       flash[:success] = 'Tour updated!'
       redirect_to @tour
     else
