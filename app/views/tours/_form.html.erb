@@ -1,21 +1,41 @@
 <%= form_for(@tour) do |f| %>
 
-    <%= f.label :title, "Name" %>
-    <%= f.text_field :title, class: "input-block-level",
-                     placeholder: "eg. Dolphin Scuba Tour" %>
+    <h5>
+      Tour Name
+    </h5>
 
-    <%= f.label :tour_date, "Date" %>
-    <%= f.date_select :tour_date %>
+    <div class="controls controls-row">
+      <%= f.text_field :title, class: "input-block-level",
+                               placeholder: "eg. Dolphin Scuba Tour" %>
+    </div>
 
-    <%= f.label :duration_before_typecast, "Duration" %>
-    <%= f.text_field :duration_before_typecast, class: "input-block-level",
-                     placeholder: "eg. 1 hour 30 minutes" %>
+    <h5>
+      Tour Date
+    </h5>
 
-    <%= f.label :total_seats, "Total Seats" %>
-    <%= f.number_field :total_seats, class: "input-block-level" %>
+    <div class="controls controls-row">
+      <%= f.date_select :tour_date %>
+    </div>
 
-    <%= f.label :tour_price, "Price per person" %>
-    <%= f.number_field :price_cents, class: "input-block-level" %>
+    <h5>
+      Tour Duration
+    </h5>
+
+    <div class="controls controls-row">
+      <%= f.text_field :duration_before_typecast, class: "input-block-level",
+                                                  placeholder: "eg. 1 hour 30 minutes" %>
+    </div>
+
+    <h5>
+      Tour Seating and Pricing
+    </h5>
+
+    <div class="controls controls-row">
+      <%= f.number_field :total_seats, class: "span3" %>
+
+      <%= f.number_field :price_cents, class: "span3",
+                                       placeholder: "$0" %>
+    </div>
 
     <%= f.submit "Create Tour", class: "btn btn-large btn-block btn-primary" %>
 
