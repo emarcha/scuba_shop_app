@@ -1,8 +1,26 @@
-<div class="center hero-unit">
-  <h1>The Lion Fish Scuba Shop</h1>
-  
-  <h2>Welcome! Sign in or sign up to book a tour.</h2>
+<div class="row-fluid">
 
-  <%= link_to "Sign in", signin_path, class: "btn btn-large btn-primary" %>
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+  <div class="span8">
+    <%= link_to image_tag('fish.png', alt:'Fish', height:400),
+                'http://www.behance.net/gallery/Lil-Blue-Fish/524612' %>
+  </div>
+
+  <div id="home" class="span4 hero-unit">
+    <h4 class="text-center">
+      Welcome to the Lion Fish Scuba Shop!
+    </h4>
+    <p class="home">
+      We offer local tours of the XYZ Carribbean Islands.
+      Visit our <a href="/about">about</a> page to find
+      out more.
+    </p>
+    <p class="home">
+      Note: The image on the left was casually borrowed. Click it
+      to view the original source.
+    </p>
+    <a href="/tours" class="btn btn-large btn-success btn-block">
+      View Tours
+    </a>
+  </div>
+
 </div>

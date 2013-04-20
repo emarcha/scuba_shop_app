@@ -44,28 +44,17 @@ img {
 
 h1, h2, h3, h4, h5, h6 { 
   line-height: 1; 
-} 
-
-h1 { 
-  font-size: 3em; 
-  letter-spacing: -2px; 
-  margin-bottom: 30px; 
-  text-align: center; 
-} 
-
-h2 { 
-  font-size: 1.2em; 
-  letter-spacing: -1px; 
-  margin-bottom: 30px; 
-  text-align: center; 
-  font-weight: normal; 
-  color: $grayLight; 
-} 
+}
 
 p { 
   font-size: 1.1em; 
   line-height: 1.7em; 
-} 
+}
+
+p.home {
+  font-size: 0.95em;
+  line-height: 1em;
+}
 
 
 /* header */ 
@@ -147,14 +136,6 @@ aside {
 
 /* forms */ 
 
-/* input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb; 
-  width: 100%; 
-  padding: 10px; 
-  margin-bottom: 15px; 
-  @include box_sizing; 
-}  */
-
 select {
   border: 1px solid #bbb;
   width: auto;
@@ -202,4 +183,8 @@ input {
   width: 100%;
   margin-top: 45px; 
   @include box_sizing; 
-} 
+}
+
+#home {
+  min-height: 400px;
+}
