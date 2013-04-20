@@ -15,8 +15,9 @@ describe "StaticPages" do
     let(:heading)     { 'The Lion Fish Scuba Shop' } 
     let(:page_title)  { '' } 
 
-    it_should_behave_like "all static pages"     
-    it { should_not have_title('| Home') } 
+    it_should_behave_like "all static pages"
+    it { should have_link('View Tours') }
+    it { should_not have_title('| Home') }
   end 
   
   describe "Help page" do 
@@ -43,9 +44,6 @@ describe "StaticPages" do
     expect(page).to have_title(full_title('About Us'))
     click_link "Help" 
     expect(page).to have_title(full_title('Help'))
-    click_link "Home"
-    click_link "Sign up now!"
-    expect(page).to have_title(full_title('Sign up'))
     click_link "The Lion Fish Scuba Shop"
     expect(page).to have_title(full_title(''))
   end 
