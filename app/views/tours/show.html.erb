@@ -2,22 +2,30 @@
 
 <div class="row-fluid">
   <div class="span4">
-    <h4>Title</h4>
+
+    <h2 class="tour-show">Tour Information</h2>
+
+    <h5>Title</h5>
     <p><%= @tour.title %></p>
 
-    <h4>Date</h4>
+    <h5>Date</h5>
     <p><%= @tour.tour_date.strftime("%B %d, %Y") %></p>
 
-    <h4>Remaining Seats</h4>
+    <h5>Remaining Seats</h5>
     <p><%= @tour.available_seats %></p>
 
-    <h4>Duration</h4>
+    <h5>Duration</h5>
     <p><%= ChronicDuration.output(@tour.duration, format: :long) %></p>
 
-    <%= link_to "Add Booking", new_tour_booking_path(@tour), class: "btn btn-primary" %>
+    <h5>Price</h5>
+    <p><%= humanized_money_with_symbol @tour.price_cents %></p>
+
+    <%= link_to 'Cancel', @tour, method: :delete,
+                                data: { confirm: 'Cancel tour and notify bookings?' },
+                                class: 'btn btn-danger btn-block' %>
   </div>
   <div class="span8">
-    <h4>Scheduled Bookings</h4>
+    <h2 class="tour-show">Booking Information</h2>
     <% if @tour.bookings.any? %>
       <table class="table table-striped">
         <thead>
@@ -25,7 +33,7 @@
           <th>Customer</th>
           <th>Seats Purchased</th>
           <th>Total</th>
-          <th>Purchased</th>
+          <th>Purchased On</th>
         </thead>
         <tbody>
           <%= render @bookings %>
@@ -34,6 +42,14 @@
       <%= will_paginate @bookings %>
     <% else %>
       No bookings for this tour.
+    <% end %>
+
+    <% if @tour.available_seats > 0 %>
+        <%= link_to 'Add Booking', new_tour_booking_path(@tour), class: 'btn btn-primary btn-block' %>
+    <% else %>
+        <button type="button" class="btn btn-primary btn-block disabled" disabled="disabled">
+          Add Booking
+        </button>
     <% end %>
   </div>
 </div>

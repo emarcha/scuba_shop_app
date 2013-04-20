@@ -38,7 +38,8 @@ namespace :db do
                               confirmation_email: Faker::Internet.safe_email,
                               billing_address: Faker::Address.street_address,
                               billing_state: Faker::Address.state_abbr,
-                              billing_zipcode: Faker::Address.zip_code)
+                              billing_zipcode: Faker::Address.zip_code,
+                              created_at: Random.date)
       end
     end
 

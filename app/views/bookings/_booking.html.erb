@@ -2,12 +2,16 @@
   <td style="text-align: center">
     <%= booking.id %>
   </td>
-  <td></td>
+  <td>
+    <%= booking.card_name %>
+  </td>
   <td style="text-align: center">
     <%= booking.num_seats %>
   </td>
-  <td></td>
   <td>
-    <%= time_ago_in_words(booking.created_at) %>
+    <%= humanized_money_with_symbol booking.tour.price_cents * booking.num_seats %>
+  </td>
+  <td>
+    <%= booking.created_at.strftime('%d-%b-%Y') %>
   </td>
 </tr>
