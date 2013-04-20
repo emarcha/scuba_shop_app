@@ -10,12 +10,16 @@
       <% if tour.available_seats > 0 %>
         <%= link_to 'Book', new_tour_booking_path(tour), class: 'btn btn-mini btn-success' %>
       <% else %>
-        <%= link_to 'Book', '#', class: 'btn btn-mini btn-success disabled' %>
+        <button type="button" class="btn btn-mini btn-success disabled" disabled="disabled">
+          Book
+        </button>
       <% end %>
 
       <% if signed_in? && current_user.admin?  %>
         <%= link_to 'Edit', edit_tour_path(tour), class: 'btn btn-mini btn-warning' %>
-        <%= link_to 'Cancel', '#', class: 'btn btn-mini btn-danger' %>
+        <%= link_to 'Cancel', tour, method: :delete,
+                                    data: { confirm: 'Cancel tour and notify bookings?' },
+                                    class: 'btn btn-mini btn-danger' %>
       <% end %>
     </td>
     <td>

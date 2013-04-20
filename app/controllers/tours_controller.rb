@@ -1,6 +1,6 @@
 class ToursController < ApplicationController
 
-  before_action :admin_user,      only: [:new, :create, :show, :edit, :update]
+  before_action :admin_user,      only: [:new, :create, :show, :edit, :update, :destroy]
 
   def index
     @tours = Tour.paginate(page: params[:page])
@@ -31,11 +31,17 @@ class ToursController < ApplicationController
 
   def update
     if @tour.update_attributes(user_params)
-      flash[:success] = "Profile updated!"
+      flash[:success] = 'Tour updated!'
       redirect_to @tour
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    Tour.find(params[:id]).destroy
+    flash[:success] = 'Tour canceled and bookings notified.'
+    redirect_to tours_path
   end
 
   private
