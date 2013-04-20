@@ -30,6 +30,7 @@ class ToursController < ApplicationController
   end
 
   def update
+    @tour = Tour.find(params[:id])
     if @tour.update_attributes(tour_params)
       flash[:success] = 'Tour updated!'
       redirect_to @tour

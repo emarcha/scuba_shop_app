@@ -20,6 +20,7 @@
     <h5>Price</h5>
     <p><%= humanized_money_with_symbol @tour.price_cents %></p>
 
+    <%= link_to 'Edit', edit_tour_path(@tour), class: 'btn btn-block btn-warning' %>
     <%= link_to 'Cancel', @tour, method: :delete,
                                 data: { confirm: 'Cancel tour and notify bookings?' },
                                 class: 'btn btn-danger btn-block' %>
